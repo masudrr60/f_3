@@ -21,6 +21,10 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _numberController = TextEditingController();
+    TextEditingController _emailController = TextEditingController();
+    TextEditingController _passwordController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         title:Text("Rahat1",style:TextStyle(
@@ -35,6 +39,7 @@ class Home extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
             child: TextField(
+               controller:_emailController,
               decoration: InputDecoration(
                 filled:true,
                 fillColor: Colors.grey,
@@ -64,6 +69,7 @@ class Home extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
             child: TextField(
+              controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
                 filled:true,
@@ -76,8 +82,7 @@ class Home extends StatelessWidget {
                 helperText: "Enter your password",
                 helperStyle: TextStyle(fontSize: 10,color: Colors.black),
                 prefixIcon: Icon(Icons.password),
-                suffixIcon: Icon(Icons.security),
-                // suffixText:""
+                suffixIcon: Icon(Icons.remove_red_eye),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.blueAccent,width: 5),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomRight: Radius.circular(10)),
@@ -94,6 +99,7 @@ class Home extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
             child: TextField(
+              controller: _numberController,
               obscureText: true,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -120,6 +126,44 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
+
+          ElevatedButton(style:ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            shadowColor: Colors.black,
+            shape:RoundedRectangleBorder(
+              borderRadius:BorderRadius.circular(25),
+            )
+          ),
+              onPressed: () {
+            _passwordController.text.length > 6? print("Password is awsome") : print("Password is week");
+            print(_passwordController.text);
+            print(_emailController.text);
+            print(_numberController.text);
+
+          },
+              child: Text("Submit",style: TextStyle(
+                color: Colors.blueAccent,fontSize: 20,
+              ),)),
+
+Text("hellooo this is 1"),
+          Divider(),
+          Text("hellooo this is 2"),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
+
+            child: ListTile(
+              title: Text("Masudur Rahman"),
+              subtitle: Text("Bsc fhgaksjfhauik"),
+              leading: Icon(Icons.account_circle_outlined),
+              trailing: Icon(Icons.send),
+              onTap: (){
+                print("iam ontap");
+              },
+
+
+            ),
+          )
 
         ],
       ),
